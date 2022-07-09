@@ -491,11 +491,11 @@ unsafeThaw :: (Elem a, PrimMonad p) => SparseMatrix n m a -> p (SMM.MSparseMatri
 unsafeThaw (SparseMatrix fp) = return $! SMM.MSparseMatrix fp
 
 -- | Return a single row of the sparse matrix.
-getRow :: forall n m r a. (Elem a, KnownNat n, KnownNat m, KnownNat r, r <= n, 1 <= n) => Row r -> SparseMatrix n m a -> SparseMatrix 1 m a
+getRow :: forall n m r a. (Elem a, KnownNat n, KnownNat m, KnownNat r, r <= n, 1 <= n, 0 <= m) => Row r -> SparseMatrix n m a -> SparseMatrix 1 m a
 getRow row mat = block row (Col @0) (Row @1) (Col @m) mat
 
 -- | Return a single column of the sparse matrix.
-getCol :: forall n m c a. (Elem a, KnownNat n, KnownNat m, KnownNat c, c <= m, 1 <= m) => Col c -> SparseMatrix n m a -> SparseMatrix n 1 a
+getCol :: forall n m c a. (Elem a, KnownNat n, KnownNat m, KnownNat c, c <= m, 1 <= m, 0 <= n) => Col c -> SparseMatrix n m a -> SparseMatrix n 1 a
 getCol col mat = block (Row @0) col (Row @n) (Col @1) mat
 
 -- | Return all rows of the sparse matrix.

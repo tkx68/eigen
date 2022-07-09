@@ -2,3 +2,4 @@ dist*
 result*
 *.sw*
 *.ghc*
+cabal.project.local

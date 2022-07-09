@@ -19,7 +19,7 @@ module Eigen.Solver.LA
   , linearRegression
   ) where
 
-import Eigen.Internal (Elem, Cast(..))
+import Eigen.Internal (Cast(..))
 import Eigen.Matrix
 import Foreign.C.Types (CInt)
 import Foreign.Marshal.Alloc (alloca)
